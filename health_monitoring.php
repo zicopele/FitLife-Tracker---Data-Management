@@ -4,7 +4,7 @@
 $host = '127.0.0.1';
 $user = 'root';
 $password = 'Password';
-$database = 'petpal';
+$database = 'fitlifetracker';
 
 // Create a connection to the database
 $conn = new mysqli($host, $user, $password, $database);

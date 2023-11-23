@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogging - Fitness Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Fitness Tracker</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="exercises.html">Exercises</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="logout.html" style="color: #fff; float: right; margin-right: 20px;">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="info-section">
+            <h2>Jogging</h2>
+            <p>Jogging is a popular form of physical activity that can help improve cardiovascular fitness and decrease body fat. Ready to go for a jog? Set your time and pace yourself!</p>
+        </div>
+        <form id="exercise-form">
+            <label for="duration">Choose your exercise duration:</label>
+            <select id="duration" name="duration">
+                <option value="1">1 minute</option>
+                <option value="10">10 minutes</option>
+                <option value="20">20 minutes</option>
+                <option value="30">30 minutes</option>
+                <option value="40">40 minutes</option>
+                <option value="50">50 minutes</option>
+                <option value="60">60 minutes</option>
+            </select>
+            <input type="button" value="Start Workout" onclick="startWorkout()">
+            <input type="button" value="End Workout" onclick="endWorkout()">
+        </form>
+        <div id="timer">00:00</div>
+        <div id="calories-burned"></div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Fitness Tracker</p>
+    </footer>
+    <script>
+        var userWeight = 70; // Placeholder for weight
+        var userHeight = 170; // Placeholder for height
+        var userAge = 30; // Placeholder for age
+        var MET = 7; // MET value for jogging
+        var timer;
+
+        function startWorkout() {
+            var duration = parseInt(document.getElementById('duration').value);
+            var countdown = duration * 60;
+            var timerDisplay = document.getElementById('timer');
+            timer = setInterval(function() {
+                var minutes = parseInt(countdown / 60, 10);
+                var seconds = parseInt(countdown % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                timerDisplay.textContent = minutes + ":" + seconds;
+
+                if (--countdown < 0) {
+                    clearInterval(timer);
+                    calculateCalories(duration);
+                }
+            }, 1000);
+        }
+
+        function calculateCalories(duration) {
+            var caloriesBurned = (MET * userWeight * 3.5) / 200 * duration;
+            document.getElementById('calories-burned').textContent = "Calories Burned: " + caloriesBurned.toFixed(2);
+        }
+
+        function endWorkout() {
+            clearInterval(timer);
+            document.getElementById('timer').textContent = "00:00";
+            document.getElementById('calories-burned').textContent = "";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise History - Fitness Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+    <h1>Fitness Tracker</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="exercises.html">Exercises</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="history.html">History</a></li>
+        </ul>
+<a href="logout.html" style="color: #fff; float: right; margin-right: 20px;">Logout</a>
+    </nav>
+</header>
+
+    <main>
+        <h2>Exercise History</h2>
+        <?php
+        $server = "localhost";
+        $username = "root";
+        $password = "wissam79";
+        $database = "fitlifetracker";
+        
+        // Create connection
+        $conn = new mysqli($server, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch data from the database
+$sql = "SELECT * FROM user_profiles";
+$result = $conn->query($sql);
+
+// Close the connection
+$conn->close();
+?>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Weight</th>
+                    <th>Height</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Display data in the table
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>
+                                <td>{$row['id']}</td>
+                                <td>{$row['first_name']}</td>
+                                <td>{$row['last_name']}</td>
+                                <td>{$row['username']}</td>
+                                <td>{$row['email']}</td>
+                                <td>{$row['weight']}</td>
+                                <td>{$row['height']}</td>
+                                <td>{$row['age']}</td>
+                              </tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='8'>No records found</td></tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2023 Fitness Tracker</p>
+    </footer>
+</body>
+</html>

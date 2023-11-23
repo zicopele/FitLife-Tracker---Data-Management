@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Fitness Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <div id="login-form">
+            <h2>Login</h2>
+            <form onsubmit="return checkLogin()">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                
+                <input type="submit" value="Login">
+            </form>
+            <p id="login-error" style="color: red;"></p>
+        </div>
+    </main>
+    <script>
+        function checkLogin() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var loginError = document.getElementById('login-error');
+            
+            if(username === 'user' && password === 'user') {
+                window.location.href = 'index.html'; // Redirect to index page
+                return false; // Prevent form submission
+            } else {
+                loginError.textContent = 'Wrong password, Try again!';
+                return false; // Prevent form submission
+            }
+        }
+    </script>
+</body>
+</html>

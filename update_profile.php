@@ -2,7 +2,7 @@
 // Connection parameters
 $server = "localhost";
 $username = "root";
-$password = "wissam79";
+$password = "";
 $database = "fitlifetracker";
 
 // Create connection

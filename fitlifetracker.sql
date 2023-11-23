@@ -52,25 +52,16 @@ INSERT INTO `health_records` (`record_id`, `user_id`, `heart_rate`, `blood_press
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `date_of_birth` date DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `date_of_birth`, `created_at`) VALUES
-(1, 'user1', 'password1', 'user1@example.com', '1990-01-01', '2023-11-22 10:14:12'),
-(2, 'user2', 'password2', 'user2@example.com', '1985-05-15', '2023-11-22 10:14:12'),
-(3, 'user3', 'password3', 'user3@example.com', '1998-07-20', '2023-11-22 10:14:12'),
-(4, 'user4', 'password4', 'user4@example.com', '1992-11-10', '2023-11-22 10:14:12'),
-(5, 'user5', 'password5', 'user5@example.com', '1980-03-25', '2023-11-22 10:14:12');
+CREATE TABLE user_profiles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    username VARCHAR(255),
+    email VARCHAR(255),
+    weight INT,
+    height INT,
+    age INT
+);
 
 --
 -- Indexes for dumped tables
@@ -115,8 +106,4 @@ ALTER TABLE `users`
 ALTER TABLE `health_records`
   ADD CONSTRAINT `health_records_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 

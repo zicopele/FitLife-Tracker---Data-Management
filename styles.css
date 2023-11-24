@@ -45,6 +45,15 @@ main {
     background-position: center;
 }
 
+/* Text with dark border effect */
+.text-border {
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
+
 #profile-form {
     max-width: 400px;
     margin: 0 auto;
@@ -113,5 +122,63 @@ footer {
     border: 5px solid #000; /* Add a black border for contrast */
     padding: 20px;
     border-radius: 10px;
-    display: inline-block; /* Needed to wrap the border around the text tightly */
+    display: inline-block; 
 }
+#create-account-form {
+    max-width: 400px;
+    margin: 100px auto; /* Centralize form */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid #fff; /* White border */
+    border-radius: 10px;
+    text-align: center;
+    color: #333; /* Black text */
+}
+
+#create-account-form label,
+#create-account-form input,
+#create-account-form input[type="submit"] {
+    display: block; /* Stack elements vertically */
+    width: calc(100% - 40px); /* Full width minus padding */
+    margin-bottom: 10px;
+}
+
+#create-account-form input[type="submit"] {
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#about, #testimonials, #call-to-action {
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    color: #fff; /* Set text color to white */
+    border: none; /* Remove any border */
+    background: none; /* Remove any background to allow the main page background to show */
+}
+
+#testimonials blockquote {
+    font-style: italic;
+    padding-left: 20px;
+    margin: 20px 0;
+    border-left: 4px solid #fff; /* Ensure the quote line is white */
+    color: #fff; /* Set text color to white */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+
+

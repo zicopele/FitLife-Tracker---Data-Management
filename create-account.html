@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Fitness Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <div id="create-account-form">
+            <h2>Create Account</h2>
+            <form action="register.php" method="post">
+                <!-- Keep the name attributes consistent with the PHP script -->
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <!-- The confirm password field can stay the same, it doesn't need to be sent to the server -->
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm_password" required>
+                
+                <input type="submit" value="Create Account">
+            </form>
+            <p id="create-account-error" style="color: red;"></p>
+        </div>
+    </main>    <script>
+        // Include any JavaScript validation or AJAX calls here if necessary
+    </script>
+</body>
+</html>
